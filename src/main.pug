@@ -1,0 +1,75 @@
+extends _layout.pug
+block append scripts
+	script(defer type="module" src="/js/main.js")
+block body
+	a.fixed.top-0.right-0.text-white.px-8px.pt-2px.pb-10px.no-underline.h-15px.block.text-center(href="/licenses.html" bg="[#634a8e]" rounded="[0_0_0_10px]" data-translation-key="licenseButton")
+	.m-8px
+		.flex.content-center.justify-center.items-center
+			img.max-h-64px.max-w-64px(src="/icons/vpkscan.png" alt="VPK Scanner Logo" width="64px" height="64px")
+			h1.ml-15px(data-translation-key="title")
+		label.text-left(for="pathInput" data-translation-key="pathLabel")
+		input#pathInput.w-700px(type="text" disabled)
+		button#scanButton(type="button" data-translation-key="scanButton"  disabled)
+		button#defaultButton.mt-5px(type="button" data-translation-key="defaultButton" disabled)
+		button#browseButton.mt-5px(type="button" data-translation-key="browseButton" disabled)
+		#error.hidden.text-white.bg-red-700.px-10px.py-5px.my-5px(style="border-radius:6px")
+			p#errorText.m-0.my-2px
+			button#closeError(data-translation-key="errorNoticeCloseButton")
+		.min-h-50px
+			#scanStatus
+			#sortStatus
+			#compareStatus
+			#time
+			#spinner.hidden
+		#results
+			#resultsText
+			#loadOrderHint.hidden(data-translation-key="loadOrderHint")
+			table#table.hidden
+				tr
+					mixin th(key)
+						th(data-translation-key=key)
+					+th("tableHeader1")
+					+th("tableHeader2")
+					+th("tableHeader3")
+		style.
+			body {
+				overflow-y: scroll
+			}
+			table {
+				border-collapse: collapse;
+				border-spacing: 0px;
+			}
+			th {
+				border-bottom: 3px solid black;
+				background: #FFFFFF;
+			}
+			td {
+				padding: 5px;
+				border: 1px solid black;
+			}
+			tr:nth-child(odd) {
+				background: #E1E1E1;
+			}
+			@keyframes spinner {
+				0% {
+				transform: translate3d(-50%, -50%, 0) rotate(0deg);
+				}
+				100% {
+				transform: translate3d(-50%, -50%, 0) rotate(360deg);
+				}
+			}
+			#spinner::before {
+				animation: 1s linear infinite spinner;
+				animation-play-state: inherit;
+				border: solid 5px #cfd0d1;
+				border-bottom-color: #1c87c9;
+				border-radius: 50%;
+				content: "";
+				height: 30px;
+				width: 30px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate3d(-50%, -50%, 0);
+				will-change: transform;
+			}

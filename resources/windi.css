@@ -1,0 +1,258 @@
+.bg-red-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
+}
+[bg~="[#634a8e]"] {
+  --tw-bg-opacity: 1;
+  background-color: rgba(99, 74, 142, var(--tw-bg-opacity));
+}
+[bg~="[#44FF00]"] {
+  --tw-bg-opacity: 1;
+  background-color: rgba(68, 255, 0, var(--tw-bg-opacity));
+}
+[hover\:bg~="[#aaaaaa]"]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(170, 170, 170, var(--tw-bg-opacity));
+}
+.rounded-md {
+  border-radius: 0.375rem;
+}
+[rounded="[0_0_0_10px]"] {
+  border-radius: 0 0 0 10px;
+}
+[rounded="[0_0_10px_0]"] {
+  border-radius: 0 0 10px 0;
+}
+.border-0 {
+  border-width: 0px;
+}
+.block {
+  display: block;
+}
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.hidden {
+  display: none;
+}
+.items-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.content-center {
+  -ms-flex-line-pack: center;
+  -webkit-align-content: center;
+  align-content: center;
+}
+.justify-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.h-full {
+  height: 100%;
+}
+.h-screen {
+  height: 100vh;
+}
+.h-15px {
+  height: 15px;
+}
+.h-50px {
+  height: 50px;
+}
+.h-150px {
+  height: 150px;
+}
+.h-10px {
+  height: 10px;
+}
+.m-0 {
+  margin: 0px;
+}
+.m-8px {
+  margin: 8px;
+}
+.m-10px {
+  margin: 10px;
+}
+.my-5px {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.my-2px {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.mt-10px {
+  margin-top: 10px;
+}
+.ml-15px {
+  margin-left: 15px;
+}
+.mt-5px {
+  margin-top: 5px;
+}
+.max-h-64px {
+  max-height: 64px;
+}
+.max-w-64px {
+  max-width: 64px;
+}
+[max-w="[100%]"] {
+  max-width: 100%;
+}
+.min-h-30px {
+  min-height: 30px;
+}
+.min-h-150px {
+  min-height: 150px;
+}
+.min-h-50px {
+  min-height: 50px;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.p-15px {
+  padding: 15px;
+}
+.p-10px {
+  padding: 10px;
+}
+.px-8px {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.px-10px {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.py-5px {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.pt-2px {
+  padding-top: 2px;
+}
+.pb-10px {
+  padding-bottom: 10px;
+}
+.fixed {
+  position: fixed;
+}
+.absolute {
+  position: absolute;
+}
+.bottom-0 {
+  bottom: 0px;
+}
+.right-0 {
+  right: 0px;
+}
+.left-0 {
+  left: 0px;
+}
+.top-0 {
+  top: 0px;
+}
+.top-50 {
+  top: 12.5rem;
+}
+.left-50 {
+  left: 12.5rem;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+.no-underline {
+  text-decoration: none;
+}
+[content~="#634A8E"] {
+  content: "#634A8E";
+}
+[content~="width=device-width, "] {
+  content: "width=device-width,";
+}
+[content~="initial-scale=1"] {
+  content: "initial-scale=1";
+}
+[content~="Nicholas"] {
+  content: "Nicholas";
+}
+[content~="Miller"] {
+  content: "Miller";
+}
+[content~="Scans"] {
+  content: "Scans";
+}
+[content~="a"] {
+  content: "a";
+}
+[content~="folder"] {
+  content: "folder";
+}
+[content~="for"] {
+  content: "for";
+}
+[content~="VPK"] {
+  content: "VPK";
+}
+[content~="files, "] {
+  content: "files,";
+}
+[content~="then"] {
+  content: "then";
+}
+[content~="scans"] {
+  content: "scans";
+}
+[content~="the"] {
+  content: "the";
+}
+[content~="content"] {
+  content: "content";
+}
+[content~="any"] {
+  content: "any";
+}
+[content~="matching"] {
+  content: "matching";
+}
+[content~="warns"] {
+  content: "warns";
+}
+[content~="user."] {
+  content: "user.";
+}
+.w-full {
+  width: 100%;
+}
+.w-screen {
+  width: 100vw;
+}
+.w-700px {
+  width: 700px;
+}
+.w-10px {
+  width: 10px;
+}
+.w-50px {
+  width: 50px;
+}

@@ -1,0 +1,58 @@
+{
+	"os": {
+		"windows": {
+			"defaultPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2",
+			"hl2.exe": "hl2.exe",
+			"vpk.exe": "vpk.exe"
+		},
+		"linux": {
+			"defaultPath": "~/.steam/steam/SteamApps/common/Team Fortress 2",
+			"hl2.exe": "hl2",
+			"vpk.exe": "vpk"
+		},
+		"darwin": {
+			"defaultPath": "~/.steam/steam/SteamApps/common/Team Fortress 2",
+			"hl2.exe": "hl2.app",
+			"vpk.exe": "vpk.app"
+		}
+	},
+	"language": {
+		"en": {
+			"title": "VPK Conflict Scanner",
+			"updateNoticeCloseButton": "Close",
+			"updateNoticeUpdateButton": "Update",
+			"updateNoticeVersion": "An update for VPK Conflict Scanner is available. New version is %0%, you have version %1%.",
+			"errorNoticeCloseButton": "Close",
+			"errorFolder": "Folder doesn't exist.",
+			"errorHL2exe": "Cannot find %0%.",
+			"errorVPKexe": "Cannot find %0%.",
+			"errorBinFolder": "Cannot find the \"bin\" folder.",
+			"errorTfFolder": "Cannot find the \"tf\" folder.",
+			"errorCustomFolder": "Cannot find the \"custom\" folder.",
+			"pathLabel": "Location of %0%",
+			"scanButton": "Scan",
+			"defaultButton": "Use default location",
+			"browseButton": "Browse",
+			"scanStatus": "Scanned %0% VPKs, and %1% folders...",
+			"sortStatus": "Sorted %0% lines of data...",
+			"compareStatus": "Made %0% comparisions...",
+			"processTime": "Took %0% seconds to scan.",
+			"processTimeTooltip": "%0% milliseconds",
+			"noConflicts": "No conflicts were found! 😀",
+			"foundConflicts": "%0% conflicts were found. 😞",
+			"loadOrderHint": "Remember, VPK 1 will be loaded, and VPK 2 will be ignored.",
+			"tableHeader1": "VPK/Folder 1",
+			"tableHeader2": "VPK/Folder 2",
+			"tableHeader3": "Confliction",
+			"licenseTitle": "Licenses",
+			"vpkCSLicense": "VPK Conflict Scanner License",
+			"neutralinoLicense": "Neutralinojs License",
+			"pugLicense": "Pug Templating Language License",
+			"windiCSSLicense": "WindiCSS CSS Library License",
+			"jqueryLicense": "jQuery JavaScript Library License",
+			"robotoLicense": "Roboto Font License",
+			"licenseButton": "View Licenses",
+			"scannerButton": "Back to Scanner"
+		}
+	}
+}

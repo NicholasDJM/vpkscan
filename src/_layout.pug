@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		title VPK Conflict Scanner
+		meta(name="description" content="Scans a folder for VPK files, then scans the content for any matching files, then warns the user.")
+		meta(name="author" content="Nicholas Miller")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		link(rel="icon" href="/icons/vpkscan.png")
+		meta(name="theme-color" content="#634A8E")
+		link(rel="stylesheet" href="/windi.css")
+		script(defer src="/js/jquery.min.js")
+		script(defer src="/js/neutralino.js")
+		script(defer type="module" src="/js/common.js")
+		block scripts
+		block style
+			style.
+				@font-face {
+					font-family: 'Roboto';
+					font-style: normal;
+					font-weight: 400;
+					src: local(''),
+						url('/fonts/Roboto-Regular.ttf') format('truetype');
+					font-display: swap;
+				}
+				body {
+					font-family: 'Roboto', sans-serif;
+				}
+	body.m-0
+		#updateNotice.fixed.bottom-0.right-0.left-0.min-h-30px.p-15px.hidden(bg="[#44FF00]" max-w="[100%]")
+			#updateVersion
+			#updateSummary
+			.text-right
+				button#updateButton.mt-10px.rounded-md.border-0.bg-green.p-10px(type="button" hover:bg="[#aaaaaa]" data-translation-key="updateNoticeUpdateButton")
+				button#closeNoticeButton.mt-10px.rounded-md.border-0.bg-green.p-10px(type="button" hover:bg="[#aaaaaa]" data-translation-key="updateNoticeCloseButton")
+		block body
