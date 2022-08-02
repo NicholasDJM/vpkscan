@@ -35,7 +35,7 @@
       "fullScreen": false,
       "alwaysOnTop": false,
       "icon": "/resources/icons/favicon.ico",
-      "enableInspector": false,
+      "enableInspector": true,
       "borderless": false,
       "maximize": false,
       "hidden": false,

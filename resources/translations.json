@@ -40,7 +40,7 @@
 			"processTimeTooltip": "%0% milliseconds",
 			"noConflicts": "No conflicts were found! 😀",
 			"foundConflicts": "%0% conflicts were found. 😞",
-			"loadOrderHint": "Remember, VPK 1 will be loaded, and VPK 2 will be ignored.",
+			"loadOrderHint": "Remember, VPK 1 will override VPK 2.",
 			"tableHeader1": "VPK/Folder 1",
 			"tableHeader2": "VPK/Folder 2",
 			"tableHeader3": "Confliction",
@@ -52,7 +52,8 @@
 			"jqueryLicense": "jQuery JavaScript Library License",
 			"robotoLicense": "Roboto Font License",
 			"licenseButton": "View Licenses",
-			"scannerButton": "Back to Scanner"
+			"scannerButton": "Back to Scanner",
+			"version": "Version %0%"
 		}
 	}
 }

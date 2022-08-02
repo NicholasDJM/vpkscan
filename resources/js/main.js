@@ -6,7 +6,7 @@ const length = window.length;
 const getValueByIndex = window.getValueByIndex;
 const getKeyByIndex = window.getKeyByIndex;
 const log = window.log;
-
+const delay = window.delay;
 
 function setError(reason) {
 	$("#errorText").text(reason);
@@ -90,20 +90,19 @@ async function sort(content) {
 	let sortedData = {};
 	sortedData[0] = 0;
 	let counter = 0;
+	log("TOTAL OF CONTENT: "+content[0]+1);
 	for (let index = 1; index < content[0]+1; index++) {
 		sortedData[0] = index;
 		let final = {};
 		final[0] = content[index].file;
-		//compare[compare[0]+1].name = content[i].name
 		let data = content[index].stdOut.split(newline());
-		for (let index_=1; index_<data.length; index_++) {
-			if (data[index_]!=="") {
-				final[index_] = data[index_];
+		for (const [index_, datum] of data.entries()) {
+			if (datum!=="") {
+				final[index_+1] = datum;
 				counter++;
 				$("#sortStatus").text(await getLocalString("sortStatus", counter.toLocaleString()));
 			}
 		}
-		//final[-1] = counter;
 		sortedData[index] = final;
 	}
 	return sortedData;
@@ -113,12 +112,11 @@ async function compare(data) {
 	let conflicts = [];
 	let counter = 0;
 	for (let index = 1; index < data[0];index++) { // Start going thru the VPK files
-		for (let index_ = 1; index_ < Object.keys(data[index]).length; index_++) { // Then go thru the files inside a particular VPK.
+		for (let index_ = 1; index_ < length(data[index]); index_++) { // Then go thru the files inside a particular VPK.
 			let fileToCompare = data[index][index_];
-			if (fileToCompare !== "sound/sound.cache" && // Don't compare sound caches.
-				fileToCompare.split("/").length > 1) { // Don't compare root level files. These files don't affect the game.
+			if (fileToCompare !== "sound/sound.cache" & fileToCompare !== "info.vdf") {// Don't compare sound caches or info.vdf files.
 				for (let index2 = index+1;index2<data[0];index2++) { // Next, go thru all of the VPK files except the one we're comparing against.
-					for (let index2_ = 1; index2_ < Object.keys(data[index2]).length;index2_++) { // Go thru all files inside the other VPKs.
+					for (let index2_ = 1; index2_ < length(data[index2]);index2_++) { // Go thru all files inside the other VPKs.
 						counter++;
 						$("#compareStatus").text(await getLocalString("compareStatus", counter.toLocaleString()));
 						if (fileToCompare === data[index2][index2_]) {
@@ -133,25 +131,12 @@ async function compare(data) {
 }
 let limit = 0;
 async function constructPath(folder) {
-	//log(folder)
 	let folderContents = await readDirectory(folder);
-	let data;
-	log(folderContents);
+	let data = "";
 	for (let index = 2; index < length(folderContents); index++) {
 		const subDirectory = folder + "\\" + folderContents[index].entry;
-		if (folderContents[index].type === "FILE") {
-			log("FILE:", data);
-			data = (data === undefined ? "" : data) + subDirectory + newline();
-			log("FILE AFTER:", data);
-		} else {
-			log("TOTAL:", data);
-			data = (data === undefined ? "" : data) + await constructPath(subDirectory);
-			log("TOTAL AFTER:", data);
-		}
-		/* TODO: This is returning too early. We need to concat to a single variable, then return.
-				Perhaps only return if entry type is file, otherwise construct path, then return whole string.*/
+		data = folderContents[index].type === "FILE" ? data + subDirectory + newline() : data + await constructPath(subDirectory);
 	}
-	log("FINAL:", data);
 	return data;
 }
 
@@ -191,70 +176,58 @@ async function startScan(path) {
 							if (exists(tfDirectory, "custom", "DIRECTORY")) {
 								log("Found custom folder.");
 								let customDirectory = await readDirectory(path+"/tf/custom");
-								let counter = [0, 0]; // [0] = files, [1] = folders
+								let counter = [0, 0]; // counter[0] = file counter, counter[1] = folder counter
 								for (let index = 2; index < customDirectory.length; index++) {
 									let handle = customDirectory[index];
 									if (customDirectory[index].type === "FILE") {
 										if (handle.entry.slice(-4)===".vpk") {
 											let data = await exec("\""+ path +"\\bin\\vpk.exe\" l \""+ path +"\\tf\\custom\\"+ handle.entry +"\"");
-											//data.cmd = "\""+ path +"\\bin\\vpk.exe\" l \""+ path +"\\tf\\custom\\"+ handle.entry +"\"";
 											data.file = handle.entry;
 											content[0] = content[0] + 1;
 											content[content[0]] = data;
-											//log("VPK:", data);
 											counter[0] = counter[0] + 1;
 										}
 									}
 									else {
-										log(handle);
 										const cd = path+"\\tf\\custom";
 										let data = await constructPath(cd+"\\"+handle.entry);
-										log("RAW", data);
 										data = data.split(cd);
-										log("REMOVE CURRENT DIRECTORY AND SPLIT FILES", data);
-										data.shift();
-										log("DELETE FIRST ENTRY, SHOULD BE BLANK", data);
-										//data = data[1];
-
-										//log("GET FIRST DATAPOINT", data);
+										if (data[0]==="") {
+											data.shift();
+										}
 										let completedString = "";
 										let folderName;
-										for (let index_ = 0; index_ < data.length; index_++) {
-											log("RAW", data);
-											log("INDEX", index_);
-											log("RAW INDEX", data[index_]);
-											let file = data[index_];
-											log("CONVERT TO PRIVATE VARIABLE", file);
-											file = file.slice(1, file.length);
-											log("REMOVE LEADING SLASH", file);
+										for (let file of data) {
+											if (file[0] === "\\") {
+												file = file.slice(1, file.length);
+											}
 											file = file.split("\\");
-											log("SPLIT BY SLASH", file);
 											folderName = file[0];
-											log("CAPTURE FOLDER NAME", folderName);
 											file.shift();
-											log("REMOVE FOLDER NAME FROM ARRAY", file);
 											file = file.join("/");
-											log("COMBINE DATA INTO STRING", file);
 											completedString = completedString + file;
-											log("ADD TO PRE CONTENT STRING", completedString);
 										}
 										let preContent = {stdOut: completedString, file: folderName};
-										log("ADD FOLDER NAME TO PRE CONTENT STRING, ADD DATA", preContent);
 										content[0] = content[0] + 1;
 										content[content[0]] = preContent;
-										log("ADD TO CONTENT", content);
 										counter[1] = counter[1]+1;
 									}
 									$("#scanStatus").text(await getLocalString("scanStatus", counter[0].toLocaleString(), counter[1].toLocaleString()));
 								}
 								log(content);
+								await delay(500);
 								let sortedData = await sort(content);
+								log(sortedData);
+								await delay(500);
 								let finalData = await compare(sortedData);
+								log(finalData);
+								await delay(500);
 								if (finalData.length > 0) {
 									$("#resultsText").html(`<p>${getLocalString("foundConflicts", finalData.length)}</p>`);
 									for (const finalDatum of finalData) {
 										$("#table").append(`<tr class="tableData"><td>${finalDatum[0]}</td><td>${finalDatum[1]}</td><td>${finalDatum[2]}</td></tr>`);
 										// TODO: Save data to storage, so the window can be closed and reopened and data can be referenced later without a rescan.
+										// TODO: Split out displaying of data from this function, so we can display past data without rescanning.
 									}
 									$("#table").show();
 								} else {
@@ -349,3 +322,4 @@ $(()=>{
 	}, 10);
 	getPath();
 });
+

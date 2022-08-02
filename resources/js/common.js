@@ -1,9 +1,15 @@
 //window.translationsDebug = true; // Uncomment if you want to find the corresponding translation key for a given element.
 
-//window.debug = true // Uncomment if you want log data to be displayed.
+window.debug = true; // Uncomment if you want log data to be displayed.
+
 function log(...data) {
 	if (window.debug) {
-		console.log(data);
+		if (data.length > 1) {
+			console.log(data);
+		} else {
+			console.log(data[0]);
+		}
+		Neutralino.debug.log(data.toString());
 	}
 }
 Neutralino.init();
@@ -27,16 +33,6 @@ async function getUpdate() {
 		console.error(error);
 	}
 }
-
-$(()=>{
-	$("#closeNoticeButton").on("click", ()=>{
-		$("#updateNotice").hide();
-	});
-	loadTranslationsWrapper();
-});
-
-
-
 
 function translationsLoaded() {
 	return typeof(window.translations)==="object";
@@ -75,6 +71,9 @@ function getLang() {
 async function loadTranslationsWrapper() {
 	await loadTranslations();
 	hydrateTranslations();
+	$(".version").each((index, element)=>{
+		$(element).text(getLocalString("version", NL_APPVERSION));
+	});
 	//getUpdate();
 }
 
@@ -126,6 +125,24 @@ function hydrateTranslations() {
 	});
 }
 
+//https://blog.praveen.science/right-way-of-delaying-execution-synchronously-in-javascript-without-using-loops-or-timeouts/
+function delay(n = 2000) {
+	return new Promise(done => {
+		setTimeout(() => {
+			done();
+		}, n);
+	});
+}
+
+
+$(()=>{
+	$("#closeNoticeButton").on("click", ()=>{
+		$("#updateNotice").hide();
+	});
+	loadTranslationsWrapper();
+});
+
+
 window.getLocalPath = getLocalPath;
 window.getLocalString = getLocalString;
 window.translationsLoaded = translationsLoaded;
@@ -133,3 +150,4 @@ window.length = length;
 window.getValueByIndex = getValueByIndex;
 window.getKeyByIndex = getKeyByIndex;
 window.log = log;
+window.delay = delay;

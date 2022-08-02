@@ -13,7 +13,7 @@
     <script defer src="/js/neutralino.js"></script>
     <script defer type="module" src="/js/common.js"></script>
     <script defer src="/js/licenses.js"></script>
-    <style lang="windi">
+    <style>
       @font-face {
       	font-family: 'Roboto';
       	font-style: normal;
@@ -23,7 +23,6 @@
       	font-display: swap;
       }
       body {
-      	@apply dark:bg-black dark:text-white;
       	font-family: 'Roboto', sans-serif;
       }
     </style>
@@ -39,7 +38,7 @@
     </div><a class="text-white px-8px pt-2px pb-10px no-underline h-15px block text-center fixed top-0 left-0" href="/main.html" bg="[#634a8e]" rounded="[0_0_10px_0]" data-translation-key="scannerButton"></a>
     <h1 class="text-center" data-translation-key="licenseTitle"></h1>
         <details class="text-center m-10px">
-          <summary data-translation-key="vpkCSLicense"></summary>
+          <summary data-translation-key="vpkCSLicense"></summary><a data-href="https://github.com/NicholasDJM/vpkscan" href="https://github.com/NicholasDJM/vpkscan">https://github.com/NicholasDJM/vpkscan</a><br>
           <iframe src="/licenses/vpkscan.txt" width="700" height="500"></iframe>
         </details>
         <details class="text-center m-10px">
@@ -71,5 +70,6 @@
       	overflow: auto;
       }
     </style>
+    <div class="version fixed bottom-0 right-0 m-5px"></div>
   </body>
 </html>
