@@ -2,7 +2,7 @@ extends _layout.pug
 block append scripts
 	script(defer type="module" src="/js/main.js")
 block body
-	a.fixed.top-0.right-0.text-white.px-8px.pt-2px.pb-10px.no-underline.h-15px.block.text-center(href="/licenses.html" bg="[#634a8e]" rounded="[0_0_0_10px]" data-translation-key="licenseButton")
+	a.fixed.top-0.right-0.text-white.px-8px.pt-2px.pb-10px.no-underline.h-15px.block.text-center(href="/html/licenses.html" bg="[#634a8e]" rounded="[0_0_0_10px]" data-translation-key="licenseButton")
 	.m-8px
 		.flex.content-center.justify-center.items-center
 			img.max-h-64px.max-w-64px(src="/icons/vpkscan.png" alt="VPK Scanner Logo" width="64px" height="64px")
@@ -32,9 +32,6 @@ block body
 					+th("tableHeader2")
 					+th("tableHeader3")
 		style.
-			body {
-				overflow-y: scroll
-			}
 			table {
 				border-collapse: collapse;
 				border-spacing: 0px;

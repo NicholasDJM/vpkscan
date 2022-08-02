@@ -17,3 +17,4 @@ neutralino.js
 /.github
 /manifest.json
 node_modules
+/resources/html
