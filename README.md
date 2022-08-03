@@ -1,5 +1,7 @@
 # VPK Conflict Scanner ![Version](https://img.shields.io/badge/version-0.1.0-yellow) ![GitHub](https://img.shields.io/github/license/NicholasDJM/vpkscan)
 
+[![Click here to Download](https://img.shields.io/static/v1?label=&message=Click%20here%20to%20Download&color=blue)](https://github.com/NicholasDJM/vpkscan/releases/download/0.1.0/vpkscan-release.zip)
+
 ![VPK Scanner App](screenshots/Conflictions.png)  
 
 
