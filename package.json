@@ -95,7 +95,7 @@
 			],
 			"guard-for-in": "error",
 			"multiline-comment-style": [
-				"error",
+				"warn",
 				"bare-block"
 			],
 			"no-alert": "error",

@@ -4,19 +4,21 @@ block append scripts
 block body
 	a.text-white.px-8px.pt-2px.pb-10px.no-underline.h-15px.block.text-center.fixed.top-0.left-0(href="/html/main.html" bg="[#634a8e]" rounded="[0_0_10px_0]" data-translation-key="scannerButton")
 	h1.text-center(data-translation-key="licenseTitle")
-	mixin l(src, name, href)
-		details.text-center.m-10px
+	.text-center
+		a#toggle(href="javascript:void(0)" data-translation-key="toggleLicenseOpen")
+	mixin l(src, name, href, fallback)
+		details.text-center.m-10px=fallback
 			summary(data-translation-key=name)
 			if href!=undefined
 				a(data-href=href href=href)=href
 				br
 			iframe(src="/licenses/"+src width="700" height="500")
-	+l("vpkscan.txt", "vpkCSLicense", "https://github.com/NicholasDJM/vpkscan")
-	+l("neutralinojs.txt", "neutralinoLicense", "https://neutralino.js.org/")
-	+l("pugjs.txt", "pugLicense", "https://pugjs.org/")
-	+l("WindiCSS.txt", "windiCSSLicense", "https://windicss.org/")
-	+l("jquery.txt", "jqueryLicense", "https://jquery.com/")
-	+l("roboto.txt", "robotoLicense", "https://fonts.google.com/specimen/Roboto")
+	+l("vpkscan.txt", "vpkCSLicense", "https://github.com/NicholasDJM/vpkscan", "VPK Conflict Scanner")
+	+l("neutralinojs.txt", "neutralinoLicense", "https://neutralino.js.org/", "Neutralinojs")
+	+l("pugjs.txt", "pugLicense", "https://pugjs.org/", "Pug")
+	+l("WindiCSS.txt", "windiCSSLicense", "https://windicss.org/", "WindiCSS")
+	+l("jquery.txt", "jqueryLicense", "https://jquery.com/", "jQuery")
+	+l("roboto.txt", "robotoLicense", "https://fonts.google.com/specimen/Roboto", "Roboto")
 	style.
 		iframe {
 			resize: both;

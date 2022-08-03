@@ -3,19 +3,20 @@ block append scripts
 	script(defer type="module" src="/js/main.js")
 block body
 	a.fixed.top-0.right-0.text-white.px-8px.pt-2px.pb-10px.no-underline.h-15px.block.text-center(href="/html/licenses.html" bg="[#634a8e]" rounded="[0_0_0_10px]" data-translation-key="licenseButton")
-	.m-8px
+	.m-8px.text-center
 		.flex.content-center.justify-center.items-center
 			img.max-h-64px.max-w-64px(src="/icons/vpkscan.png" alt="VPK Scanner Logo" width="64px" height="64px")
 			h1.ml-15px(data-translation-key="title")
+		div#version
 		label.text-left(for="pathInput" data-translation-key="pathLabel")
 		input#pathInput.w-700px(type="text" disabled)
 		button#scanButton(type="button" data-translation-key="scanButton"  disabled)
-		button#defaultButton.mt-5px(type="button" data-translation-key="defaultButton" disabled)
+		//-button#defaultButton.mt-5px(type="button" data-translation-key="defaultButton" disabled)
 		button#browseButton.mt-5px(type="button" data-translation-key="browseButton" disabled)
 		#error.hidden.text-white.bg-red-700.px-10px.py-5px.my-5px(style="border-radius:6px")
 			p#errorText.m-0.my-2px
 			button#closeError(data-translation-key="errorNoticeCloseButton")
-		.min-h-50px
+		.min-h-50px.text-center
 			#scanStatus
 			#sortStatus
 			#compareStatus
@@ -24,13 +25,14 @@ block body
 		#results
 			#resultsText
 			#loadOrderHint.hidden(data-translation-key="loadOrderHint")
-			table#table.hidden
-				tr
-					mixin th(key)
-						th(data-translation-key=key)
-					+th("tableHeader1")
-					+th("tableHeader2")
-					+th("tableHeader3")
+			.flex.content-center.justify-center.items-center
+				table#table.hidden.text-left
+					tr.text-center
+						mixin th(key)
+							th(data-translation-key=key)
+						+th("tableHeader1")
+						+th("tableHeader2")
+						+th("tableHeader3")
 		style.
 			table {
 				border-collapse: collapse;

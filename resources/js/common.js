@@ -61,6 +61,7 @@ function getLang() {
 			}
 		}
 		console.warn("No suitable language found. Defaulting to English.");
+		Neutralino.debug.log("No suitable language found. Defaulting to English.");
 		return "en";
 	}
 	console.warn("Translations not loaded. Defaulting to English");
@@ -71,7 +72,7 @@ function getLang() {
 async function loadTranslationsWrapper() {
 	await loadTranslations();
 	hydrateTranslations();
-	$(".version").each((index, element)=>{
+	$("#version").each((index, element)=>{
 		$(element).text(getLocalString("version", NL_APPVERSION));
 	});
 	//getUpdate();
