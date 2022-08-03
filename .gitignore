@@ -3,7 +3,7 @@
 
 # Neutralinojs binaries and builds
 /bin
-/dist
+
 /.tmp
 
 # Neutralinojs client (minified)
@@ -15,7 +15,6 @@ neutralino.js
 
 /.vscode
 /.github
-/manifest.json
 node_modules
 /resources/html
 /resources/html/licenses.windi.html

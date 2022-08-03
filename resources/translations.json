@@ -56,7 +56,8 @@
 			"robotoLicense": "Roboto Font License",
 			"licenseButton": "View Licenses",
 			"scannerButton": "Back to Scanner",
-			"version": "Version %0%"
+			"version": "Version %0%",
+			"noSummary": "No summary available."
 		}
 	}
 }

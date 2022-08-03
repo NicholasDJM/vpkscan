@@ -18,16 +18,14 @@ Neutralino.events.on("windowClose", ()=>{
 	Neutralino.app.exit();
 });
 
-
-// TODO: Add auto updater.
-
 async function getUpdate() {
 	let url = NL_UPDATE_URL;
 	let manifest;
 	try {
 		manifest = await Neutralino.updater.checkForUpdates(url);
-		console.log(manifest);
+		log(manifest);
 		$("#updateVersion").text(getLocalString("updateNoticeVersion", manifest.version, NL_APPVERSION));
+		$("#updateSummary").text(manifest.summary?? getLocalString("noSummary"));
 		$("#updateNotice").show();
 	} catch(error) {
 		console.error(error);
@@ -75,7 +73,7 @@ async function loadTranslationsWrapper() {
 	$("#version").each((index, element)=>{
 		$(element).text(getLocalString("version", NL_APPVERSION));
 	});
-	//getUpdate();
+	getUpdate();
 }
 
 async function loadTranslations() {
