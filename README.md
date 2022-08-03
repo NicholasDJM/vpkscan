@@ -9,4 +9,4 @@ Requires access to VPK.exe in the bin folder of Team Fortress 2.
 Currently only works on Windows.
 Available in English only.
 
-Speak a different language and can translate? Edit translations.json and submit a pull request.
+Speak a different language and can translate? Edit [translations.json](https://github.com/NicholasDJM/vpkscan/edit/main/resources/translations.json) and submit a pull request.
