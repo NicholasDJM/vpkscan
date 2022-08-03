@@ -25,7 +25,7 @@ async function getUpdate() {
 		manifest = await Neutralino.updater.checkForUpdates(url);
 		log(manifest);
 		$("#updateVersion").text(getLocalString("updateNoticeVersion", manifest.version, NL_APPVERSION));
-		$("#updateSummary").text(manifest.summary?? getLocalString("noSummary"));
+		$("#updateSummary").text(manifest.data.summary?? getLocalString("noSummary"));
 		$("#updateNotice").show();
 	} catch(error) {
 		log(manifest);

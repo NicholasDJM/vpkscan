@@ -19,3 +19,4 @@ node_modules
 /resources/html
 /resources/html/licenses.windi.html
 /resources/html/main.windi.html
+/dist/vpkscan-release.zip
