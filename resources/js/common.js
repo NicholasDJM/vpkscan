@@ -28,6 +28,7 @@ async function getUpdate() {
 		$("#updateSummary").text(manifest.summary?? getLocalString("noSummary"));
 		$("#updateNotice").show();
 	} catch(error) {
+		log(manifest);
 		console.error(error);
 	}
 }
