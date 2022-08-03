@@ -154,63 +154,6 @@
 .no-underline {
   text-decoration: none;
 }
-[content~="#634A8E"] {
-  content: "#634A8E";
-}
-[content~="width=device-width, "] {
-  content: "width=device-width,";
-}
-[content~="initial-scale=1"] {
-  content: "initial-scale=1";
-}
-[content~="Nicholas"] {
-  content: "Nicholas";
-}
-[content~="Miller"] {
-  content: "Miller";
-}
-[content~="Scans"] {
-  content: "Scans";
-}
-[content~="a"] {
-  content: "a";
-}
-[content~="folder"] {
-  content: "folder";
-}
-[content~="for"] {
-  content: "for";
-}
-[content~="VPK"] {
-  content: "VPK";
-}
-[content~="files, "] {
-  content: "files,";
-}
-[content~="then"] {
-  content: "then";
-}
-[content~="scans"] {
-  content: "scans";
-}
-[content~="the"] {
-  content: "the";
-}
-[content~="content"] {
-  content: "content";
-}
-[content~="any"] {
-  content: "any";
-}
-[content~="matching"] {
-  content: "matching";
-}
-[content~="warns"] {
-  content: "warns";
-}
-[content~="user."] {
-  content: "user.";
-}
 .w-700px {
   width: 700px;
 }

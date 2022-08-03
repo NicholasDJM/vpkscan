@@ -1,7 +1,8 @@
 {
     "applicationId": "nicholas.miller.vpk.scanner",
-    "version": "0.1.3",
+    "version": "0.1.0",
     "resourceURL": "https://github.com/NicholasDJM/vpkscan/raw/main/dist/resources.neu",
     "data": {
+        "summary": "Initial public release."
     }
 }

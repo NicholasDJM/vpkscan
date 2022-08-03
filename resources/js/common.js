@@ -18,9 +18,12 @@ Neutralino.events.on("windowClose", ()=>{
 	Neutralino.app.exit();
 });
 
+// FIXME: Ask NeutralinoJS devs why I can't get the auto update function working.
+
+let manifest;
 async function getUpdate() {
 	let url = NL_UPDATE_URL;
-	let manifest;
+	log("Update URL: " + url);
 	try {
 		manifest = await Neutralino.updater.checkForUpdates(url);
 		log(manifest);
@@ -28,8 +31,16 @@ async function getUpdate() {
 		$("#updateSummary").text(manifest.data.summary?? getLocalString("noSummary"));
 		$("#updateNotice").show();
 	} catch(error) {
-		log(manifest);
 		console.error(error);
+	}
+}
+
+async function startUpdate() {
+	if (manifest) {
+		if (manifest.version > NL_APPVERSION) {
+			await Neutralino.updater.install();
+			await Neutralino.app.restartProcess();
+		}
 	}
 }
 
@@ -74,7 +85,7 @@ async function loadTranslationsWrapper() {
 	$("#version").each((index, element)=>{
 		$(element).text(getLocalString("version", NL_APPVERSION));
 	});
-	getUpdate();
+	//getUpdate();
 }
 
 async function loadTranslations() {
@@ -140,6 +151,9 @@ $(()=>{
 		$("#updateNotice").hide();
 	});
 	loadTranslationsWrapper();
+	/*$("#updateButton").on("click", ()=>{
+		startUpdate()
+	})*/
 });
 
 
