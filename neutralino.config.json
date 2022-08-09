@@ -1,6 +1,6 @@
 {
   "applicationId": "nicholas.miller.vpk.scanner",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "defaultMode": "window",
   "port": 0,
   "documentRoot": "/resources/",
@@ -37,7 +37,7 @@
       "fullScreen": false,
       "alwaysOnTop": false,
       "icon": "/resources/icons/favicon.ico",
-      "enableInspector": false,
+      "enableInspector": true,
       "borderless": false,
       "maximize": false,
       "hidden": false,

@@ -41,6 +41,7 @@
 			"lastScan": "Last scan: %0%",
 			"noConflicts": "No conflicts were found! 😀",
 			"foundConflicts": "%0% conflicts were found. 😞",
+			"foundConflictsSingle": "%0% conflict was found. 😞",
 			"loadOrderHint": "Remember, VPK 1 will override VPK 2.",
 			"tableHeader1": "VPK/Folder 1",
 			"tableHeader2": "VPK/Folder 2",
@@ -57,7 +58,8 @@
 			"licenseButton": "View Licenses",
 			"scannerButton": "Back to Scanner",
 			"version": "Version %0%",
-			"noSummary": "No summary available."
+			"noSummary": "No summary available.",
+			"hintScanKey": "You can press the R key to scan."
 		}
 	}
 }

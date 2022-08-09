@@ -10,8 +10,8 @@ const getLocalPath = window.getLocalPath,
 
 function setError(reason) {
 	$("#errorText").text(reason);
-	$("#error").show();
-	const timing = 250;
+	$("#error").slideDown(250);
+	/*const timing = 250;
 	function anim(size) {
 		$("#error").css("outline", size+"px solid #FF0000");
 	}
@@ -30,11 +30,11 @@ function setError(reason) {
 	}, timing*4);
 	setTimeout(()=>{
 		anim(0);
-	}, timing*5);
+	}, timing*5);*/
 }
 
 function closeError() {
-	$("#error").hide();
+	$("#error").slideUp(250);
 }
 
 async function readDirectory(path) {
@@ -140,8 +140,13 @@ async function constructPath(folder) {
 }
 
 async function renderData(data) {
+	const length_ = data.length.toLocaleString();
 	if (data.length > 0) {
-		$("#resultsText").html(`<p>${getLocalString("foundConflicts", data.length)}</p>`);
+		if (data.length === 1) {
+			$("#resultsText").html(`<p>${getLocalString("foundConflictsSingle", length_)}</p>`);
+		} else {
+			$("#resultsText").html(`<p>${getLocalString("foundConflicts", length_)}</p>`);
+		}
 		for (const entry of data) {
 			$("#table").append(`<tr class="tableData"><td>${entry[0]}</td><td>${entry[1]}</td><td>${entry[2]}</td></tr>`);
 		}
@@ -345,5 +350,13 @@ $(()=>{
 			}
 			enableElements();
 		});
+	$("body").on("keydown", (event)=>{
+		log(event.key);
+		log(typeof(event.key));
+		log(button.attr("disabled"));
+		if (event.key === "r" & (button.attr("disabled") === false || button.attr("disabled") === undefined)) {
+			button.click();
+		}
+	});
 });
 

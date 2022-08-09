@@ -13,6 +13,7 @@ block body
 		button#scanButton(type="button" data-translation-key="scanButton"  disabled)
 		//-button#defaultButton.mt-5px(type="button" data-translation-key="defaultButton" disabled)
 		button#browseButton.mt-5px(type="button" data-translation-key="browseButton" disabled)
+		p(data-translation-key="hintScanKey")
 		#error.hidden.text-white.bg-red-700.px-10px.py-5px.my-5px(style="border-radius:6px")
 			p#errorText.m-0.my-2px
 			button#closeError(data-translation-key="errorNoticeCloseButton")
@@ -34,20 +35,32 @@ block body
 						+th("tableHeader2")
 						+th("tableHeader3")
 		style.
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--border-colour: #E1E1E1;
+					--alternating-colour: #333333;
+				}
+			}
+			@media (prefers-color-scheme: light) {
+				:root {
+					--border-colour: black;
+					--alternating-colour: #E1E1E1;
+				}
+			}
 			table {
 				border-collapse: collapse;
 				border-spacing: 0px;
 			}
 			th {
-				border-bottom: 3px solid black;
-				background: #FFFFFF;
+				border-bottom: 3px solid var(--border-colour);
+				background-color: var(--background-colour);
 			}
 			td {
 				padding: 5px;
-				border: 1px solid black;
+				border: 1px solid var(--border-colour);
 			}
 			tr:nth-child(odd) {
-				background: #E1E1E1;
+				background-color: var(--alternating-colour);
 			}
 			@keyframes spinner {
 				0% {

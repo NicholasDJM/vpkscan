@@ -15,6 +15,22 @@ html(lang="en")
 		block scripts
 		block style
 			style.
+				@media (prefers-color-scheme: dark) {
+					:root {
+						--text-colour: #ffffff;
+						--background-colour: #000000;
+					}
+					a {
+						text-decoration-color: rgb(0,140,238);
+						color: rgb(0,140,238);
+					}
+				}
+				@media (prefers-color-scheme: light) {
+					:root {
+						--text-colour: #000000;
+						--background-colour: #ffffff;
+					}
+				}
 				@font-face {
 					font-family: 'Roboto';
 					font-style: normal;
@@ -25,7 +41,9 @@ html(lang="en")
 				}
 				body {
 					font-family: 'Roboto', sans-serif;
-				overflow-y: scroll
+					overflow-y: scroll;
+					background-color: var(--background-colour);
+					color: var(--text-colour);
 				}
 	body.m-0
 		#updateNotice.fixed.bottom-0.right-0.left-0.min-h-30px.p-15px.hidden(bg="[#44FF00]" max-w="[100%]")

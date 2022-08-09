@@ -1,6 +1,7 @@
 {
 	"devDependencies": {
-		"eslint": "^8.20.0",
+		"@types/jquery": "3.5.14",
+		"eslint": "^8.21.0",
 		"eslint-plugin-unicorn": "43.0.2",
 		"stylelint": "14.9.1",
 		"stylelint-config-recommended": "8.0.0",
