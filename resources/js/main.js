@@ -114,9 +114,10 @@ async function compare(data) {
 				for (let index2 = index+1;index2<data[0];index2++) { // Next, go thru all of the VPK files except the one we're comparing against.
 					for (let index2_ = 1; index2_ < length(data[index2]);index2_++) { // Go thru all files inside the other VPKs.
 						counter++;
-						$("#compareStatus").text(await getLocalString("compareStatus", counter.toLocaleString()));
 						if (counter % 100000 === 0) { // Delay every 100,000 comparisons to allow time to visually update the status.
 							await delay(10);
+							$("#compareStatus").text(await getLocalString("compareStatus", counter.toLocaleString())); // Moved to inside the if statement; too many updates to the DOM was causing the browser to use too much memory, and slowing down the calculations.
+							// With 3000 plus lines of data to compare, and updating the DOM everytime we did a compare, a 13 second calculation turned to 80 seconds. So no more updating the DOM every calculation.
 						}
 						if (fileToCompare === data[index2][index2_]) {
 							conflicts[conflicts.length] = [data[index][0], data[index2][0], fileToCompare];
@@ -277,7 +278,7 @@ async function measureScan() {
 	await startScan(input);
 	const t1 = performance.now();
 	spinner.hide();
-	$("#time").html(getLocalString("processTime", `<span title="${getLocalString("processTimeTooltip", t1-t0)}" style="text-decoration:none;border-bottom: 1px dotted black">${Math.round(t1-t0) / 1000}</span>`));
+	$("#time").html(getLocalString("processTime", `<span title="${getLocalString("processTimeTooltip", t1-t0)}" class="info">${(Math.round(t1-t0) / 1000).toLocaleString()}</span>`));
 }
 
 async function delayLoad(data, timeData) {
@@ -351,9 +352,6 @@ $(()=>{
 			enableElements();
 		});
 	$("body").on("keydown", (event)=>{
-		log(event.key);
-		log(typeof(event.key));
-		log(button.attr("disabled"));
 		if (event.key === "r" & (button.attr("disabled") === false || button.attr("disabled") === undefined)) {
 			button.click();
 		}
