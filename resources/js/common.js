@@ -36,11 +36,9 @@ async function getUpdate() {
 }
 
 async function startUpdate() {
-	if (manifest) {
-		if (manifest.version > NL_APPVERSION) {
-			await Neutralino.updater.install();
-			await Neutralino.app.restartProcess();
-		}
+	if (manifest && manifest.version > NL_APPVERSION) {
+		await Neutralino.updater.install();
+		await Neutralino.app.restartProcess();
 	}
 }
 

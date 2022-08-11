@@ -127,6 +127,7 @@ async function compare(data) {
 			}
 		}
 	}
+	$("#compareStatus").text(await getLocalString("compareStatus", counter.toLocaleString())); // Because we're not updating every comparision, we don't get the true count anymore, so we update the DOM one last time here.
 	return conflicts;
 }
 let limit = 0;
