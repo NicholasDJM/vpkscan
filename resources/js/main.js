@@ -283,9 +283,11 @@ async function measureScan() {
 }
 
 async function delayLoad(data, timeData) {
+	let debounce = false;
 	const a = setInterval(async ()=>{
 		await delay(10);
-		if (translationsLoaded()) {
+		if (translationsLoaded() & !debounce) {
+			debounce = true;
 			clearInterval(a);
 			renderData(JSON.parse(data));
 			$("#time").text(getLocalString("lastScan", timeData.toLocaleString()));
