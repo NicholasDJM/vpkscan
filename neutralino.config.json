@@ -12,6 +12,9 @@
     "enabled": true,
     "writeToLogFile": true
   },
+  "serverHeaders": {
+    "Cache-Control": "max-age=31536000"
+  },
   "nativeAllowList": [
     "app.exit",
     "app.restartProcess",
@@ -37,7 +40,7 @@
       "fullScreen": false,
       "alwaysOnTop": false,
       "icon": "/resources/icons/favicon.ico",
-      "enableInspector": true,
+      "enableInspector": false,
       "borderless": false,
       "maximize": false,
       "hidden": false,
@@ -45,27 +48,18 @@
       "exitProcessOnClose": true
     },
     "browser": {
-      "globalVariables": {
-        "TEST": "Test value browser"
-      },
-      "nativeBlockList": [
-        "filesystem.*"
-      ]
+      "globalVariables": {},
+      "nativeBlockList": []
     },
     "cloud": {
       "url": "/resources/#cloud",
-      "nativeAllowList": [
-        "app.*"
-      ]
+      "nativeAllowList": []
     },
     "chrome": {
       "width": 800,
       "height": 500,
       "args": "--user-agent=\"Neutralinojs chrome mode\"",
-      "nativeBlockList": [
-        "filesystem.*",
-        "os.*"
-      ]
+      "nativeBlockList": []
     }
   },
   "cli": {

@@ -1,6 +1,6 @@
 //window.translationsDebug = true; // Uncomment if you want to find the corresponding translation key for a given element.
 
-window.debug = true; // Uncomment if you want log data to be displayed.
+//window.debug = true; // Uncomment if you want log data to be displayed.
 
 function log(...data) {
 	if (window.debug) {
@@ -107,9 +107,6 @@ function getLocalPath(name) {
 	console.error(`Translations not loaded! Cannot get correct path. Attempted to get ${NL_OS} equivalent of ${name}`);
 }
 function getLocalString(name, ...replacements) {
-	//console.log(window.translations);
-
-	//console.log(window.translationsDebug);
 	if (translationsLoaded() & window.translationsDebug===undefined) {
 		let translation = window.translations.language[getLang()][name];
 		for (const [index, replacement] of replacements.entries()) {

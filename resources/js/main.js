@@ -153,6 +153,7 @@ async function renderData(data) {
 			$("#table").append(`<tr class="tableData"><td>${entry[0]}</td><td>${entry[1]}</td><td>${entry[2]}</td></tr>`);
 		}
 		$("#table").show();
+		$("#loadOrderHint").show();
 	} else {
 		$("#resultsText").html(`<p>${getLocalString("noConflicts")}</p>`);
 	}
@@ -264,7 +265,6 @@ async function startScan(path) {
 		}
 	} finally {
 		enableElements();
-		$("#loadOrderHint").show();
 	}
 }
 
@@ -283,11 +283,16 @@ async function measureScan() {
 }
 
 async function delayLoad(data, timeData) {
-	await delay(2000); // Must wait until translations are loaded. I should make a promised based solutions, but I'm lazy and this works.
-	renderData(JSON.parse(data));
-	$("#time").text(getLocalString("lastScan", timeData.toLocaleString()));
-	enableElements();
-	$("#spinner").hide();
+	const a = setInterval(async ()=>{
+		await delay(10);
+		if (translationsLoaded()) {
+			clearInterval(a);
+			renderData(JSON.parse(data));
+			$("#time").text(getLocalString("lastScan", timeData.toLocaleString()));
+			enableElements();
+			$("#spinner").hide();
+		}
+	}, 10);
 }
 
 $(()=>{
@@ -315,13 +320,14 @@ $(()=>{
 				console.error(error);
 			});
 	});
-	const a = setInterval(()=>{
+	const a = setInterval(async ()=>{
+		await delay(10);
 		if (translationsLoaded()) {
-			$("[data-translation-key='pathLabel']").text(getLocalString("pathLabel", getLocalPath("hl2.exe")));
-			$("#pathInput").attr("placeholder", getLocalPath("defaultPath"));
 			clearInterval(a);
+			$("#pathInputLabel").text(getLocalString("pathLabel", getLocalPath("hl2.exe")));
+			$("#pathInput").attr("placeholder", getLocalPath("defaultPath"));
 		}
-	}, 500);
+	}, 10);
 	Neutralino.storage.getData("path")
 		.then((data)=>{
 			$("#pathInput").val(data);
@@ -353,7 +359,7 @@ $(()=>{
 			enableElements();
 		});
 	$("body").on("keydown", (event)=>{
-		if (event.key === "r" & (button.attr("disabled") === false || button.attr("disabled") === undefined)) {
+		if (event.key === "r" & !button.attr("disabled") & !event.ctrlKey) {
 			button.click();
 		}
 	});

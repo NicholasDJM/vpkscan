@@ -5,22 +5,25 @@ block body
 	a.text-white.px-8px.pt-2px.pb-10px.no-underline.h-15px.block.text-center.fixed.top-0.left-0(href="/html/main.html" bg="[#634a8e]" rounded="[0_0_10px_0]" data-translation-key="scannerButton")
 	h1.text-center(data-translation-key="licenseTitle")
 	.text-center
-		a#toggle(href="javascript:void(0)" data-translation-key="toggleLicenseOpen")
-	mixin l(src, name, href, fallback)
-		details.text-center.m-10px=fallback
+		button#toggle(data-translation-key="toggleLicenseOpen")
+	mixin l(name, href)
+		details.text-center.my-30px
 			summary(data-translation-key=name)
 			if href!=undefined
-				a(data-href=href href=href)=href
+				a(href=href)=href
 				br
-			iframe(src="/licenses/"+src width="700" height="500")
-	+l("vpkscan.txt", "vpkCSLicense", "https://github.com/NicholasDJM/vpkscan", "VPK Conflict Scanner")
-	+l("neutralinojs.txt", "neutralinoLicense", "https://neutralino.js.org/", "Neutralinojs")
-	+l("pugjs.txt", "pugLicense", "https://pugjs.org/", "Pug")
-	+l("WindiCSS.txt", "windiCSSLicense", "https://windicss.org/", "WindiCSS")
-	+l("jquery.txt", "jqueryLicense", "https://jquery.com/", "jQuery")
-	+l("roboto.txt", "robotoLicense", "https://fonts.google.com/specimen/Roboto", "Roboto")
-	style.
-		iframe {
-			resize: both;
-			overflow: auto;
-		}
+			.m-auto.w-700px.h-500px
+				pre.w-700px.h-500px.overflow-scroll.text-left.border-solid.border-1.border-gray-500.resize.p-5px
+					block
+	+l("vpkCSLicense", "https://github.com/NicholasDJM/vpkscan")
+		include /licenses/vpkscan.txt
+	+l("neutralinoLicense", "https://neutralino.js.org/")
+		include /licenses/neutralinojs.txt
+	+l("pugLicense", "https://pugjs.org/")
+		include /licenses/pugjs.txt
+	+l("windiCSSLicense", "https://windicss.org/")
+		include /licenses/WindiCSS.txt
+	+l("jqueryLicense", "https://jquery.com/")
+		include /licenses/jquery.txt
+	+l("robotoLicense", "https://fonts.google.com/specimen/Roboto")
+		include /licenses/roboto.txt

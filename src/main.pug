@@ -1,6 +1,61 @@
 extends _layout.pug
 block append scripts
 	script(defer type="module" src="/js/main.js")
+block append style
+	style.
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--border-colour: #E1E1E1;
+				--alternating-colour: #333333;
+			}
+		}
+		@media (prefers-color-scheme: light) {
+			:root {
+				--border-colour: black;
+				--alternating-colour: #E1E1E1;
+			}
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0px;
+		}
+		th {
+			border-bottom: 3px solid var(--border-colour);
+			background-color: var(--background-colour);
+		}
+		td {
+			padding: 5px;
+			border: 1px solid var(--border-colour);
+		}
+		tr:nth-child(odd) {
+			background-color: var(--alternating-colour);
+		}
+		@keyframes spinner {
+			0% {
+			transform: translate3d(-50%, -50%, 0) rotate(0deg);
+			}
+			100% {
+			transform: translate3d(-50%, -50%, 0) rotate(360deg);
+			}
+		}
+		#spinner::before {
+			animation: 1s linear infinite spinner;
+			animation-play-state: inherit;
+			border: solid 5px #cfd0d1;
+			border-bottom-color: #1c87c9;
+			border-radius: 50%;
+			content: "";
+			height: 30px;
+			width: 30px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+			will-change: transform;
+		}
+		.info {
+			border-bottom: 1px dotted var(--text-colour)
+		}
 block body
 	a.fixed.top-0.right-0.text-white.px-8px.pt-2px.pb-10px.no-underline.h-15px.block.text-center(href="/html/licenses.html" bg="[#634a8e]" rounded="[0_0_0_10px]" data-translation-key="licenseButton")
 	.m-8px.text-center
@@ -8,7 +63,7 @@ block body
 			img.max-h-64px.max-w-64px(src="/icons/vpkscan.png" alt="VPK Scanner Logo" width="64px" height="64px")
 			h1.ml-15px(data-translation-key="title")
 		div#version
-		label.text-left(for="pathInput" data-translation-key="pathLabel")
+		label#pathInputLabel.text-left(for="pathInput")
 		input#pathInput.w-700px(type="text" disabled)
 		button#scanButton(type="button" data-translation-key="scanButton"  disabled)
 		//-button#defaultButton.mt-5px(type="button" data-translation-key="defaultButton" disabled)
@@ -34,57 +89,3 @@ block body
 						+th("tableHeader1")
 						+th("tableHeader2")
 						+th("tableHeader3")
-		style.
-			@media (prefers-color-scheme: dark) {
-				:root {
-					--border-colour: #E1E1E1;
-					--alternating-colour: #333333;
-				}
-			}
-			@media (prefers-color-scheme: light) {
-				:root {
-					--border-colour: black;
-					--alternating-colour: #E1E1E1;
-				}
-			}
-			table {
-				border-collapse: collapse;
-				border-spacing: 0px;
-			}
-			th {
-				border-bottom: 3px solid var(--border-colour);
-				background-color: var(--background-colour);
-			}
-			td {
-				padding: 5px;
-				border: 1px solid var(--border-colour);
-			}
-			tr:nth-child(odd) {
-				background-color: var(--alternating-colour);
-			}
-			@keyframes spinner {
-				0% {
-				transform: translate3d(-50%, -50%, 0) rotate(0deg);
-				}
-				100% {
-				transform: translate3d(-50%, -50%, 0) rotate(360deg);
-				}
-			}
-			#spinner::before {
-				animation: 1s linear infinite spinner;
-				animation-play-state: inherit;
-				border: solid 5px #cfd0d1;
-				border-bottom-color: #1c87c9;
-				border-radius: 50%;
-				content: "";
-				height: 30px;
-				width: 30px;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate3d(-50%, -50%, 0);
-				will-change: transform;
-			}
-			.info {
-				border-bottom: 1px dotted var(--text-colour)
-			}
