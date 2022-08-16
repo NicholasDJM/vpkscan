@@ -1,8 +1,8 @@
 # VPK Conflict Scanner ![Version](https://img.shields.io/badge/version-0.2.0-yellow) ![GitHub](https://img.shields.io/github/license/NicholasDJM/vpkscan)
 
-[![Click here to Download](https://img.shields.io/static/v1?label=&message=Click%20here%20to%20Download&color=blue)](https://github.com/NicholasDJM/vpkscan/releases/download/0.2.0/vpkscan-release.0.2.0.zip)
+[![Click here to Download](https://img.shields.io/static/v1?label=&message=Click%20here%20to%20Download&color=blue)](https://github.com/NicholasDJM/vpkscan/releases/download/0.2.1/vpkscan-release.0.2.1.zip)
 
-![VPK Scanner App](screenshots/Conflictions.png)  
+![VPK Scanner App](screenshots/Conflictions.png)
 
 
 A tool to scan through folders and VPK files for Team Fortress 2, check to see if any files conflict with each other, then warn the user.
