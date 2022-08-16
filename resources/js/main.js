@@ -361,7 +361,7 @@ $(()=>{
 			enableElements();
 		});
 	$("body").on("keydown", (event)=>{
-		if (event.key === "r" & !button.attr("disabled") & !event.ctrlKey) {
+		if (event.key === "r" & !button.attr("disabled") & !event.ctrlKey & !pathInput.is(":focus")) {
 			button.click();
 		}
 	});
