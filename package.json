@@ -1,8 +1,17 @@
 {
+	"scripts": {
+		"build": "build.bat",
+		"build:prod": "build.bat /r",
+		"watch": "watch.bat",
+		"dev": "run.bat",
+		"eslint": "eslint --fix ./resources/js/*.js",
+		"stylelint": "stylelint --fix ./resources/windi.css"
+	},
 	"devDependencies": {
 		"@neutralinojs/neu": "9.3.1",
 		"@types/jquery": "3.5.14",
-		"eslint": "^8.21.0",
+		"concurrently": "7.3.0",
+		"eslint": "^8.22.0",
 		"eslint-plugin-unicorn": "43.0.2",
 		"stylelint": "14.9.1",
 		"stylelint-config-recommended": "8.0.0",
@@ -119,15 +128,15 @@
 	},
 	"stylelint": {
 		"extends": [
-			"stylelint-config-standard"
+			"stylelint-config-recommended"
 		],
 		"rules": {
 			"color-hex-case": "upper",
 			"color-hex-length": "long",
 			"color-function-notation": "modern",
 			"indentation": "tab",
-			"rule-empty-line-before": "always",
-			"at-rule-empty-line-before": "always",
+			"rule-empty-line-before": "never",
+			"at-rule-empty-line-before": "never",
 			"alpha-value-notation": "number",
 			"selector-class-pattern": null,
 			"at-rule-no-unknown": [
@@ -144,16 +153,8 @@
 				true,
 				{
 					"ignore": [
-						"consecutive-duplicates-with-same-prefixless-values",
+						"consecutive-duplicates-with-different-values",
 						"consecutive-duplicates"
-					]
-				}
-			],
-			"property-no-vendor-prefix": [
-				true,
-				{
-					"ignoreProperties": [
-						"user-select"
 					]
 				}
 			]

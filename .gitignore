@@ -16,4 +16,5 @@ neutralino.js
 /.github
 node_modules
 /resources/html
+/resources/windi.css
 /manifest.json
