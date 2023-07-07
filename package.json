@@ -13,7 +13,7 @@
 		"concurrently": "7.3.0",
 		"eslint": "^8.22.0",
 		"eslint-plugin-unicorn": "43.0.2",
-		"stylelint": "14.9.1",
+		"stylelint": "15.10.1",
 		"stylelint-config-recommended": "8.0.0",
 		"windicss": "3.5.6"
 	},
